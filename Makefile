@@ -9,10 +9,10 @@ JUNK=gits.1 checkdir contrib/gitslave.spec
 all: $(TARGETS)
 
 gits.1: gits
-	pod2man < $^ > $@
+	pod2man $^ $@
 
 gits-checkup.1: gits-checkup
-	pod2man < $^ > $@
+	pod2man $^ $@
 
 contrib/gitslave.spec: contrib/gitslave.spec.in
 	if [ -d .git ]; then			    \
@@ -35,7 +35,7 @@ install: $(TARGETS)
 	@echo Consider: "make install -C contrib"
 
 README: gits
-	pod2text < gits > README
+	pod2text gits README
 
 release: README
 	@VERSION=`git describe --exact-match --match 'v[0-9]*' 2>/dev/null | \
